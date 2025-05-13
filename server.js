@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const { mongoConnect } = require('./database');
 
 const { PORT } = require("./config");
 const logger = require("./utils/logger");
@@ -43,5 +44,14 @@ app.use((request, response) => {
   });
   logger.getErrorLog(url);
 });
+
+mongoConnect(() => {
+  // uruchamiamy serwer dopiero po nawiązaniu połączenia z bazą
+  app.listen(3000, () => {
+    console.log('Serwer działa na porcie 3000');
+  });
+});
+
+
 
 app.listen(PORT);
