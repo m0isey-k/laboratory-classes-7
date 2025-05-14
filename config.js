@@ -1,7 +1,7 @@
 require('dotenv').config(); 
 
-const DB_USER = 'admin';
-const DB_PASS = '123Aw123Aw';
+const DB_USER = '';
+const DB_PASS = '';
 
 const PORT = 3000;
 module.exports = { PORT };
